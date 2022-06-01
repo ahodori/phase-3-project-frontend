@@ -8,7 +8,7 @@ import UserCarousel from './UserCarousel';
 function CompareUsers({ userArray, selectedUser }) {
   return (
     <div className="CompareUsers">
-      <UserCard />
+      <UserCard user={selectedUser} />
       <UserCard />
       <Commonalities />
       <UserCarousel />
