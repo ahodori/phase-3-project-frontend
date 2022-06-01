@@ -9,6 +9,9 @@ function CompareUsers({ userArray, selectedUser }) {
   return (
     <div className="CompareUsers">
       <UserCard user={selectedUser} />
+
+      ---
+      
       <UserCard />
       <Commonalities />
       <UserCarousel />
