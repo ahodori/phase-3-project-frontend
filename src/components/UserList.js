@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 
 function UserList({userArray}) {
   return <div className="UserList">
-    {/* {userArray.map((user) => {
+    {userArray.map((user) => {
       return <p key={user.id}>{user.name} - {user.location}</p>;
-    })} */}
+    })}
   </div>;
 }
 

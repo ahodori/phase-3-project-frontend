@@ -14,7 +14,7 @@ function Container() {
 
   //FETCH FOR USERS
   useEffect(() => {
-    fetch('URL')
+    fetch('http://localhost:9292/users')
       .then((res) => res.json())
       .then((data) => setUserArray(data));
   }, []);
