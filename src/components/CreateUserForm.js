@@ -1,23 +1,49 @@
 import React, { useState, useEffect } from 'react';
+import LocationCard from './LocationCard'
 
 // import './CreateUserForm.css';
 
-function CreateUserForm({ allStateArray, allCountryArray }) {
+function CreateUserForm({ allStateArray, allCountryArray, handleNewUser }) {
   const [name, setName] = useState('')
   const [hometown, setHometown] = useState('')
   const [image, setImage] = useState('')
   const [visitArray, setVisitArray] = useState([])
-  // const [wantsToVisitArray, setWantsToArray] = useState([])
+  // console.log(visitArray)
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault()
     const newUserArr = {
       name: name,
       location: hometown,
       imageURL: image,
       visitArray: visitArray
     }
-    // setCountryArray([])
+    setVisitArray([])
+    setName('')
+    setImage('')
+
+    handleNewUser(newUserArr)
   }
+
+  // handles "have visited" or "want to visit" button click
+  // replaces/ creates object in array
+  function updateVisitObject(country, haveVisited, wantToVisit) {
+    console.log(country, haveVisited, wantToVisit)
+    const newObj = {
+      country: country,
+      haveVisited: haveVisited,
+      wantToVisit: wantToVisit
+    }
+    // console.log(newObj)
+
+    let newVisitArray = visitArray.filter(visitObj => visitObj.country !== country)
+    newVisitArray = [...newVisitArray, newObj]
+    setVisitArray(newVisitArray)
+  }
+
+  const countryCardsArray = allCountryArray.map((country) => {
+    return <LocationCard key={country.country_name} country={country} updateVisitObject={updateVisitObject} />
+  })
 
   return (
     <div className="create-user-form">
@@ -40,6 +66,8 @@ function CreateUserForm({ allStateArray, allCountryArray }) {
           value={image}
           onChange={e => setImage(e.target.value)}
         />
+        {countryCardsArray}
+        <button id="submit-button" className="submit-form">Create New User</button>
       </form>
     </div>
   )

@@ -12,12 +12,25 @@ function Container() {
   const [allCountryArray, setAllCountryArray] = useState([])
   const [allStateArray, setAllStateArray] = useState([])
 
+
+  console.log(selectedUser)
+  console.log(userArray)
+
+  // console.log(allStateArray)
+  // console.log(allCountryArray)
+
+  function handleNewUser(userObj) {
+    setSelectedUser(userObj);
+    setUserArray([...userArray, userObj])
+  }
+
   //FETCH FOR USERS
   useEffect(() => {
     fetch('http://localhost:9292/users')
       .then((res) => res.json())
       .then((data) => setUserArray(data));
   }, []);
+
 
   // FETCH FOR ACCESS TOKEN
   // useEffect(() => {
@@ -78,7 +91,11 @@ function Container() {
               userArray={userArray}
               allCountryArray={allCountryArray}
               allStateArray={allStateArray}
+
+              handleNewUser={handleNewUser}
+
               handleSelectedUserChange={handleSelectedUserChange}
+
             />
           }
         />
