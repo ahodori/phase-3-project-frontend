@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import EditUserForm from './EditUserForm';
 
-import './EditUser.css';
+// import './EditUser.css';
 
 function EditUser({ selectedUser }) {
   return (

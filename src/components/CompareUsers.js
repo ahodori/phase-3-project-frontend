@@ -3,7 +3,7 @@ import UserCard from './UserCard';
 import Commonalities from './Commonalities';
 import UserCarousel from './UserCarousel';
 
-import './CompareUsers.css';
+// import './CompareUsers.css';
 
 function CompareUsers({ userArray, selectedUser }) {
   return (
