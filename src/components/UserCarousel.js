@@ -1,12 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import UserCard from './UserCard';
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// import './UserCarousel.css';
+function UserCarousel({ userArray }) {
+  console.log(userArray);
+  let renderUsers = userArray.map((user) => {
+    return (
+      <Carousel.Item>
+        <img className="d-block w-100" src={user.image_URL} alt={user.name} />
+        <Carousel.Caption>
+          <h3>{user.name}</h3>
+          <p>{user.location}</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    );
+  });
 
-function UserCarousel() {
   return (
-    <div className="UserCarousel">
-      <UserCard />
+    <div>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-sm-12">
+            <h3>React Bootstrap Carousel</h3>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <Carousel>{renderUsers}</Carousel>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

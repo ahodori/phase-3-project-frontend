@@ -6,15 +6,15 @@ import UserCarousel from './UserCarousel';
 // import './CompareUsers.css';
 
 function CompareUsers({ userArray, selectedUser }) {
+  const [comparedUser, setComparedUser] = useState({});
+
   return (
     <div className="CompareUsers">
       <UserCard user={selectedUser} />
-
       ---
-      
-      <UserCard />
+      <UserCard comparedUser={comparedUser} />
       <Commonalities />
-      <UserCarousel />
+      <UserCarousel userArray={userArray} />
     </div>
   );
 }
