@@ -10,15 +10,53 @@ function Container() {
   const [userArray, setUserArray] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
   const [allCountryArray, setAllCountryArray] = useState([])
+  const [allStateArray, setAllStateArray] = useState([])
 
+  // FETCH FOR USERS
   // useEffect(() => {
   //   fetch('URL')
   //     .then((res) => res.json())
   //     .then((data) => setUserArray(data));
   // }, []);
 
+  // FETCH FOR ACCESS TOKEN
+  // useEffect(() => {
+  //   fetch("https://www.universal-tutorial.com/api/getaccesstoken", {
+  //     method: 'GET',
+  //     headers: {
+  //       "Accept": "application/json",
+  //       "api-token": "ZPg_gMQZ6k43rRZWj1OZBGZP0HSb9qBwqBI0-6YaorufXfLcRstsJ4VO3TtTY4NfVNM",
+  //       "user-email": "murphymax1@gmail.com"
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then(console.log)
+  // }, [])
+
+  // FETCH FOR COUNTRIES
   useEffect(() => {
-    fetch()
+    fetch("https://www.universal-tutorial.com/api/countries", {
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtdXJwaHltYXgxQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IlpQZ19nTVFaNms0M3JSWldqMU9aQkdaUDBIU2I5cUJ3cUJJMC02WWFvcnVmWGZMY1JzdHNKNFZPM1R0VFk0TmZWTk0ifSwiZXhwIjoxNjU0MTg1NzgyfQ.eZfArIRKzhcVMwaIOVkItOFj59AnOH4P6GgwozEuroc",
+        "Accept": "application/json",
+      },
+    })
+      .then(res => res.json())
+      .then(setAllCountryArray)
+  }, [])
+
+  // FETCH FOR STATES
+  useEffect(() => {
+    fetch("https://www.universal-tutorial.com/api/states/United States", {
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtdXJwaHltYXgxQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IlpQZ19nTVFaNms0M3JSWldqMU9aQkdaUDBIU2I5cUJ3cUJJMC02WWFvcnVmWGZMY1JzdHNKNFZPM1R0VFk0TmZWTk0ifSwiZXhwIjoxNjU0MTg1NzgyfQ.eZfArIRKzhcVMwaIOVkItOFj59AnOH4P6GgwozEuroc",
+        "Accept": "application/json",
+      },
+    })
+      .then(res => res.json())
+      .then(setAllStateArray)
   }, [])
 
   return (
@@ -26,7 +64,13 @@ function Container() {
       <Routes>
         <Route
           path="/"
-          element={<SelectUser userArray={userArray} />}
+          element={
+            <SelectUser
+              userArray={userArray}
+              allCountryArray={allCountryArray}
+              allStateArray={allStateArray}
+            />
+          }
         />
         <Route
           path="/compare_users"

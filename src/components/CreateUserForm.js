@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // import './CreateUserForm.css';
 
-function CreateUserForm() {
+function CreateUserForm({ allStateArray, allCountryArray }) {
   const [name, setName] = useState('')
   const [hometown, setHometown] = useState('')
   const [image, setImage] = useState('')
@@ -10,13 +10,13 @@ function CreateUserForm() {
   // const [wantsToVisitArray, setWantsToArray] = useState([])
 
   function handleSubmit() {
-    newUserArr = {
+    const newUserArr = {
       name: name,
       location: hometown,
       imageURL: image,
       visitArray: visitArray
     }
-    setCountryArray([])
+    // setCountryArray([])
   }
 
   return (

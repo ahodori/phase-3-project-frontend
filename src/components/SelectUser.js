@@ -4,12 +4,15 @@ import UserList from './UserList';
 
 // import './SelectUser.css';
 
-function SelectUser({ userArray }) {
+function SelectUser({ userArray, allStateArray, allCountryArray }) {
   return (
     <div className="select-user-page">
       <div className="create-user">
         <h3>Create a User:</h3>
-        <CreateUserForm />
+        <CreateUserForm
+          allStateArray={allStateArray}
+          allCountryArray={allCountryArray}
+        />
       </div>
       <div className="choose-user">
         <h3>Choose existing User:</h3>
