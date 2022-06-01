@@ -4,23 +4,28 @@ import SelectUser from './SelectUser';
 import CompareUsers from './CompareUsers';
 import EditUser from './EditUser';
 
-import './Container.css';
+// import './Container.css';
 
 function Container() {
-  [userArray, setUserArray] = useState([]);
-  [selectedUser, setSelectedUser] = useState({});
+  const [userArray, setUserArray] = useState([]);
+  const [selectedUser, setSelectedUser] = useState({});
+  const [allCountryArray, setAllCountryArray] = useState([])
 
   // useEffect(() => {
   //   fetch('URL')
-  //     .then((resp) => resp.json())
+  //     .then((res) => res.json())
   //     .then((data) => setUserArray(data));
   // }, []);
 
+  useEffect(() => {
+    fetch()
+  }, [])
+
   return (
-    <div className="Container">
+    < div className="Container" >
       <Routes>
         <Route
-          path="/select_user"
+          path="/"
           element={<SelectUser userArray={userArray} />}
         />
         <Route
@@ -35,7 +40,7 @@ function Container() {
           element={<EditUser selectedUser={selectedUser} />}
         />
       </Routes>
-    </div>
+    </div >
   );
 }
 

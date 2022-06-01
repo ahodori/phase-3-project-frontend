@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import './UserList.css';
+// import './UserList.css';
 
 function UserList() {
   return <div className="UserList"></div>;

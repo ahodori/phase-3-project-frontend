@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UserCard from './UserCard';
 
-import './UserCarousel.css';
+// import './UserCarousel.css';
 
 function UserCarousel() {
   return (
