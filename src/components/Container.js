@@ -12,12 +12,12 @@ function Container() {
   const [allCountryArray, setAllCountryArray] = useState([])
   const [allStateArray, setAllStateArray] = useState([])
 
-  // FETCH FOR USERS
-  // useEffect(() => {
-  //   fetch('URL')
-  //     .then((res) => res.json())
-  //     .then((data) => setUserArray(data));
-  // }, []);
+  //FETCH FOR USERS
+  useEffect(() => {
+    fetch('URL')
+      .then((res) => res.json())
+      .then((data) => setUserArray(data));
+  }, []);
 
   // FETCH FOR ACCESS TOKEN
   // useEffect(() => {
