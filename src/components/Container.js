@@ -12,6 +12,17 @@ function Container() {
   const [allCountryArray, setAllCountryArray] = useState([])
   const [allStateArray, setAllStateArray] = useState([])
 
+  console.log(selectedUser)
+  console.log(userArray)
+
+  // console.log(allStateArray)
+  // console.log(allCountryArray)
+
+  function handleNewUser(userObj) {
+    setSelectedUser(userObj);
+    setUserArray([...userArray, userObj])
+  }
+
   // FETCH FOR USERS
   // useEffect(() => {
   //   fetch('URL')
@@ -69,6 +80,7 @@ function Container() {
               userArray={userArray}
               allCountryArray={allCountryArray}
               allStateArray={allStateArray}
+              handleNewUser={handleNewUser}
             />
           }
         />
