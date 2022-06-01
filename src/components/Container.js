@@ -12,6 +12,7 @@ function Container() {
   const [allCountryArray, setAllCountryArray] = useState([])
   const [allStateArray, setAllStateArray] = useState([])
 
+
   console.log(selectedUser)
   console.log(userArray)
 
@@ -23,12 +24,13 @@ function Container() {
     setUserArray([...userArray, userObj])
   }
 
-  // FETCH FOR USERS
-  // useEffect(() => {
-  //   fetch('URL')
-  //     .then((res) => res.json())
-  //     .then((data) => setUserArray(data));
-  // }, []);
+  //FETCH FOR USERS
+  useEffect(() => {
+    fetch('http://localhost:9292/users')
+      .then((res) => res.json())
+      .then((data) => setUserArray(data));
+  }, []);
+
 
   // FETCH FOR ACCESS TOKEN
   // useEffect(() => {
@@ -70,6 +72,15 @@ function Container() {
       .then(setAllStateArray)
   }, [])
 
+
+
+  function handleSelectedUserChange(newSelectedUser) {
+    setSelectedUser(newSelectedUser);
+    console.log(newSelectedUser);
+  }
+
+
+
   return (
     < div className="Container" >
       <Routes>
@@ -80,7 +91,11 @@ function Container() {
               userArray={userArray}
               allCountryArray={allCountryArray}
               allStateArray={allStateArray}
+
               handleNewUser={handleNewUser}
+
+              handleSelectedUserChange={handleSelectedUserChange}
+
             />
           }
         />

@@ -4,7 +4,8 @@ import UserList from './UserList';
 
 // import './SelectUser.css';
 
-function SelectUser({ userArray, allStateArray, allCountryArray, handleNewUser }) {
+
+function SelectUser({ userArray, allStateArray, allCountryArray, handleNewUser, handleSelectedUserChange }) {
   return (
     <div className="select-user-page">
       <div className="create-user">
@@ -17,7 +18,7 @@ function SelectUser({ userArray, allStateArray, allCountryArray, handleNewUser }
       </div>
       <div className="choose-user">
         <h3>Choose existing User:</h3>
-        <UserList userArray={userArray} />
+        <UserList userArray={userArray} handleSelectedUserChange={handleSelectedUserChange}/>
       </div>
     </div>
   );
