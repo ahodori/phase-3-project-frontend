@@ -5,7 +5,7 @@ import UserCarousel from './UserCarousel';
 
 import './CompareUsers.css';
 
-function CompareUsers() {
+function CompareUsers({ userArray, selectedUser }) {
   return (
     <div className="CompareUsers">
       <UserCard />

@@ -3,7 +3,7 @@ import EditUserForm from './EditUserForm';
 
 import './EditUser.css';
 
-function EditUser() {
+function EditUser({ selectedUser }) {
   return (
     <div className="EditUser">
       <EditUserForm />

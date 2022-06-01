@@ -3,7 +3,7 @@ import CreateUserForm from './CreateUserForm';
 
 import './SelectUser.css';
 
-function SelectUser() {
+function SelectUser({ userArray }) {
   return (
     <div className="SelectUser">
       <CreateUserForm />
