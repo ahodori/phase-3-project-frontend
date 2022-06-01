@@ -59,6 +59,15 @@ function Container() {
       .then(setAllStateArray)
   }, [])
 
+
+
+  function handleSelectedUserChange(newSelectedUser) {
+    setSelectedUser(newSelectedUser);
+    console.log(newSelectedUser);
+  }
+
+
+
   return (
     < div className="Container" >
       <Routes>
@@ -69,6 +78,7 @@ function Container() {
               userArray={userArray}
               allCountryArray={allCountryArray}
               allStateArray={allStateArray}
+              handleSelectedUserChange={handleSelectedUserChange}
             />
           }
         />
