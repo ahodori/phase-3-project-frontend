@@ -16,10 +16,28 @@ function Container() {
   let navigate = useNavigate();
 
   function handleNewUser(userObj) {
-    setSelectedUser(userObj);
-    setUserArray([...userArray, userObj]);
-    // Add to backend
-    navigate('../compare_users');
+    console.log(userObj);
+    fetch("http://localhost:9292/users",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userObj)
+    })
+      .then(res=>res.json())
+      .then(json=>{
+        console.log(json);
+        setSelectedUser(json);
+        setUserArray([...userArray, json]);
+        navigate('../compare_users');
+      })
+
+
+    // setSelectedUser(userObj);
+    // setUserArray([...userArray, userObj]);
+    // // Add to backend
+    // navigate('../compare_users');
   }
 
   //FETCH FOR USERS
