@@ -86,9 +86,9 @@ function EditUserForm({ selectedUser, allCountryArray, handleEditUser }) {
         <div className="cards">
           {countryCardsArray}
         </div>
-        <Button id="submit-button" className="submit-form">
+        <button id="submit-button" className="submit-form">
           Update User
-        </Button>
+        </button>
       </form>
     </div>
   );

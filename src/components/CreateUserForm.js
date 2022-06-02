@@ -23,6 +23,7 @@ function CreateUserForm({ allStateArray, allCountryArray, handleNewUser }) {
     setName('');
     setImage('');
 
+
     handleNewUser(newUser);
   }
 
@@ -77,7 +78,7 @@ function CreateUserForm({ allStateArray, allCountryArray, handleNewUser }) {
         <div className="cards">
           {countryCardsArray}
         </div>
-        <Button id="submit-button" className="submit-form">
+        <Button id="submit-button" className="submit-form" type="submit">
           Create New User
         </Button>
       </form>
