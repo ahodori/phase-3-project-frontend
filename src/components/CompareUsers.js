@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import UserCard from './UserCard';
 import Commonalities from './Commonalities';
 import UserCarousel from './UserCarousel';
@@ -12,8 +13,15 @@ function CompareUsers({ userArray, selectedUser }) {
     setComparedUser(obj);
   }
 
+  let navigate = useNavigate();
+
+  function handleButtonClick() {
+    navigate('../edit_user');
+  }
+
   return (
     <div className="CompareUsers">
+      <button onClick={handleButtonClick}>Edit</button>
       <UserCard user={selectedUser} />
       ---
       <UserCard comparedUser={comparedUser} />
