@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserCarousel({ userArray, updateComparedUser }) {
   function handleButtonClick(user) {
-    console.log(user);
     let obj = {
       name: user.name,
       image_URL: user.image_URL,
@@ -22,9 +21,6 @@ function UserCarousel({ userArray, updateComparedUser }) {
           <h3>{user.name}</h3>
           <p>{user.location}</p>
           <Button
-            name={user.name}
-            location={user.location}
-            imageURL={user.imageURL}
             onClick={() => handleButtonClick(user)}
           >
             Select User
