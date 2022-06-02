@@ -5,7 +5,7 @@
 function Header() {
   return (
     <div className="Header">
-      <h1>Geoparison</h1>
+      <h1>G E O P A R I S O N</h1>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // import './EditUserForm.css';
 
-function EditUserForm() {
+function EditUserForm({ selectedUser }) {
   return <div className="EditUserForm"></div>;
 }
 

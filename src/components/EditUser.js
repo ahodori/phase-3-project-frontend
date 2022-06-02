@@ -6,7 +6,8 @@ import EditUserForm from './EditUserForm';
 function EditUser({ selectedUser }) {
   return (
     <div className="EditUser">
-      <EditUserForm />
+      <h2>Edit User:</h2>
+      <EditUserForm selectedUser={selectedUser} />
     </div>
   );
 }

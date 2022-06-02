@@ -18,6 +18,7 @@ function Container() {
   function handleNewUser(userObj) {
     setSelectedUser(userObj);
     setUserArray([...userArray, userObj]);
+    // Add to backend
     navigate('../compare_users');
   }
 

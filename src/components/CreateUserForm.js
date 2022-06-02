@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LocationCard from './LocationCard';
 
-// import './CreateUserForm.css';
-
 function CreateUserForm({ allStateArray, allCountryArray, handleNewUser }) {
   const [name, setName] = useState('');
   const [hometown, setHometown] = useState('');
