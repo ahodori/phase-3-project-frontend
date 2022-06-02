@@ -51,12 +51,19 @@ function EditUserForm({ selectedUser, allCountryArray, handleEditUser  }) {
     setVisitArray(newVisitArray);
   }
 
+  //console.log(visitArray);
+
   const countryCardsArray = allCountryArray.map((country) => {
+    let visit = visitArray.filter((visit) => visit.country === country.country_name)
+    visit = visit ? visit[0] : visit;
+    //console.log(visit)
     return (
       <LocationCard
         key={country.country_name}
         country={country}
         updateVisitObject={updateVisitObject}
+        userHasVisited={visit?.haveVisited}
+        userWantToVisit={visit?.wantToVisit}
       />
     );
   });

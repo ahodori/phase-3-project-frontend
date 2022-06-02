@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap';
 
-function LocationCard({ country, updateVisitObject }) {
-    const [hasVisited, setHasVisited] = useState(false)
-    const [wantToVisit, setWantToVisit] = useState(false)
+function LocationCard({ country, updateVisitObject, userHasVisited=false, userWantToVisit=false}) {
+    const [hasVisited, setHasVisited] = useState(userHasVisited)
+    const [wantToVisit, setWantToVisit] = useState(userWantToVisit)
     const isMounted = useRef(false);
     // console.log(hasVisited)
     // console.log(wantToVisit)
