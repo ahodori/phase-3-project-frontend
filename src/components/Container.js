@@ -72,7 +72,6 @@ function Container() {
 
   function handleSelectedUserChange(newSelectedUser) {
     setSelectedUser(newSelectedUser);
-    console.log(newSelectedUser);
   }
 
   return (

@@ -1,9 +1,19 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function UserCarousel({ userArray }) {
-  console.log(userArray);
+function UserCarousel({ userArray, updateComparedUser }) {
+  function handleButtonClick(user) {
+    console.log(user);
+    let obj = {
+      name: user.name,
+      image_URL: user.image_URL,
+      location: user.location,
+      visits: user.visits,
+    };
+    updateComparedUser(obj);
+  }
+
   let renderUsers = userArray.map((user) => {
     return (
       <Carousel.Item>
@@ -11,6 +21,14 @@ function UserCarousel({ userArray }) {
         <Carousel.Caption>
           <h3>{user.name}</h3>
           <p>{user.location}</p>
+          <Button
+            name={user.name}
+            location={user.location}
+            imageURL={user.imageURL}
+            onClick={() => handleButtonClick(user)}
+          >
+            Select User
+          </Button>
         </Carousel.Caption>
       </Carousel.Item>
     );
