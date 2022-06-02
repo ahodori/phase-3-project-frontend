@@ -59,6 +59,7 @@ function Container() {
         );
         newUserArray = [...newUserArray, data];
         setUserArray(newUserArray);
+        setSelectedUser(data)
 
         navigate('../compare_users');
       })
