@@ -23,6 +23,7 @@ function EditUserForm({ selectedUser, allCountryArray, handleEditUser }) {
   function handleSubmit(e) {
     e.preventDefault();
     const newUser = {
+      id: parseInt(selectedUser.id),
       name: name,
       location: hometown,
       image_URL: image,

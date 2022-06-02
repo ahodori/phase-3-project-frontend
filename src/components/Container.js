@@ -42,6 +42,28 @@ function Container() {
 
   function handleEditUser(userObj) {
     console.log(userObj);
+    fetch(`http://localhost:9292/users/${userObj.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userObj)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+
+        let newUserArray = userArray.filter(
+          (userObj) => userObj.id !== data.id
+        );
+        newUserArray = [...newUserArray, data];
+        setUserArray(newUserArray);
+
+        navigate('../compare_users');
+      })
+
+
   }
 
   //FETCH FOR USERS
@@ -57,8 +79,8 @@ function Container() {
   //     method: 'GET',
   //     headers: {
   //       "Accept": "application/json",
-  //       "api-token": "ZPg_gMQZ6k43rRZWj1OZBGZP0HSb9qBwqBI0-6YaorufXfLcRstsJ4VO3TtTY4NfVNM",
-  //       "user-email": "murphymax1@gmail.com"
+  //       "api-token": "NxEfO8PRtQaUxCygV4USuG_p9BbkHvGEgkLQv_rz68deg5a5V6WwY4qJke5_jplxPtA",
+  //       "user-email": "b.losh34@yahoo.com"
   //     },
   //   })
   //     .then((res) => res.json())
@@ -71,7 +93,7 @@ function Container() {
       method: 'GET',
       headers: {
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtdXJwaHltYXgxQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IlpQZ19nTVFaNms0M3JSWldqMU9aQkdaUDBIU2I5cUJ3cUJJMC02WWFvcnVmWGZMY1JzdHNKNFZPM1R0VFk0TmZWTk0ifSwiZXhwIjoxNjU0MTg1NzgyfQ.eZfArIRKzhcVMwaIOVkItOFj59AnOH4P6GgwozEuroc',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJiLmxvc2gzNEB5YWhvby5jb20iLCJhcGlfdG9rZW4iOiJOeEVmTzhQUnRRYVV4Q3lnVjRVU3VHX3A5QmJrSHZHRWdrTFF2X3J6NjhkZWc1YTVWNld3WTRxSmtlNV9qcGx4UHRBIn0sImV4cCI6MTY1NDI3NjU3NX0.WqbvxJr6Xas4OuFir9YDeLW7YzmrjWp6n5IAciZMhh0',
         Accept: 'application/json',
       },
     })
@@ -80,18 +102,18 @@ function Container() {
   }, []);
 
   // FETCH FOR STATES
-  useEffect(() => {
-    fetch('https://www.universal-tutorial.com/api/states/United States', {
-      method: 'GET',
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtdXJwaHltYXgxQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IlpQZ19nTVFaNms0M3JSWldqMU9aQkdaUDBIU2I5cUJ3cUJJMC02WWFvcnVmWGZMY1JzdHNKNFZPM1R0VFk0TmZWTk0ifSwiZXhwIjoxNjU0MTg1NzgyfQ.eZfArIRKzhcVMwaIOVkItOFj59AnOH4P6GgwozEuroc',
-        Accept: 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then(setAllStateArray);
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://www.universal-tutorial.com/api/states/United States', {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization:
+  //         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtdXJwaHltYXgxQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IlpQZ19nTVFaNms0M3JSWldqMU9aQkdaUDBIU2I5cUJ3cUJJMC02WWFvcnVmWGZMY1JzdHNKNFZPM1R0VFk0TmZWTk0ifSwiZXhwIjoxNjU0MTg1NzgyfQ.eZfArIRKzhcVMwaIOVkItOFj59AnOH4P6GgwozEuroc',
+  //       Accept: 'application/json',
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then(setAllStateArray);
+  // }, []);
 
   function handleSelectedUserChange(newSelectedUser) {
     setSelectedUser(newSelectedUser);
