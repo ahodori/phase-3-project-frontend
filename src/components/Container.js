@@ -18,15 +18,15 @@ function Container() {
   function handleNewUser(userObj) {
     console.log(userObj);
     fetch("http://localhost:9292/users",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(userObj)
-    })
-      .then(res=>res.json())
-      .then(json=>{
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userObj)
+      })
+      .then(res => res.json())
+      .then(json => {
         console.log(json);
         setSelectedUser(json);
         setUserArray([...userArray, json]);
@@ -121,7 +121,7 @@ function Container() {
         {/* Possible Dynamic Path Needed: */}
         <Route
           path="/edit_user"
-          element={<EditUser selectedUser={selectedUser} allCountryArray={allCountryArray} handleEditUser={handleEditUser}/>}
+          element={<EditUser selectedUser={selectedUser} allCountryArray={allCountryArray} handleEditUser={handleEditUser} />}
         />
       </Routes>
     </div>

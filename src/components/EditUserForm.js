@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import LocationCard from './LocationCard';
 
 // import './EditUserForm.css';
 
-function EditUserForm({ selectedUser, allCountryArray, handleEditUser  }) {
+function EditUserForm({ selectedUser, allCountryArray, handleEditUser }) {
   const [name, setName] = useState(selectedUser.name);
   const [hometown, setHometown] = useState(selectedUser.location);
   const [image, setImage] = useState(selectedUser.image_URL);
@@ -89,9 +90,11 @@ function EditUserForm({ selectedUser, allCountryArray, handleEditUser  }) {
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
-        {countryCardsArray}
+        <div className="cards">
+          {countryCardsArray}
+        </div>
         <button id="submit-button" className="submit-form">
-          Create New User
+          Update User
         </button>
       </form>
     </div>
