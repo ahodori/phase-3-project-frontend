@@ -11,28 +11,26 @@ function Container() {
   const [userArray, setUserArray] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
   const [allCountryArray, setAllCountryArray] = useState([]);
-  const [allStateArray, setAllStateArray] = useState([]);
+  // const [allStateArray, setAllStateArray] = useState([]);
 
   let navigate = useNavigate();
 
   function handleNewUser(userObj) {
     console.log(userObj);
-    fetch("http://localhost:9292/users",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(userObj)
-      })
-      .then(res => res.json())
-      .then(json => {
+    fetch('http://localhost:9292/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userObj),
+    })
+      .then((res) => res.json())
+      .then((json) => {
         console.log(json);
         setSelectedUser(json);
         setUserArray([...userArray, json]);
         navigate('../compare_users');
-      })
-
+      });
 
     // setSelectedUser(userObj);
     // setUserArray([...userArray, userObj]);
@@ -42,29 +40,24 @@ function Container() {
 
   function handleEditUser(userObj) {
     console.log(userObj);
-    fetch(`http://localhost:9292/users/${userObj.id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(userObj)
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-
+    fetch(`http://localhost:9292/users/${userObj.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userObj),
+    })
+      .then((res) => res.json())
+      .then((data) => {
         let newUserArray = userArray.filter(
           (userObj) => userObj.id !== data.id
         );
         newUserArray = [...newUserArray, data];
         setUserArray(newUserArray);
-        setSelectedUser(data)
+        setSelectedUser(data);
 
         navigate('../compare_users');
-      })
-
-
+      });
   }
 
   //FETCH FOR USERS
@@ -120,6 +113,19 @@ function Container() {
     setSelectedUser(newSelectedUser);
   }
 
+  function handleDeleteClick(id) {
+    fetch(`http://localhost:9292/users/${id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then(() => {
+        let updatedArray = userArray.filter((user) => user.id !== id);
+        setUserArray(updatedArray);
+        setSelectedUser({});
+        navigate('../');
+      });
+  }
+
   return (
     <div className="Container">
       <Routes>
@@ -129,7 +135,7 @@ function Container() {
             <SelectUser
               userArray={userArray}
               allCountryArray={allCountryArray}
-              allStateArray={allStateArray}
+              // allStateArray={allStateArray}
               handleNewUser={handleNewUser}
               handleSelectedUserChange={handleSelectedUserChange}
             />
@@ -138,13 +144,23 @@ function Container() {
         <Route
           path="/compare_users"
           element={
-            <CompareUsers userArray={userArray} selectedUser={selectedUser} />
+            <CompareUsers
+              userArray={userArray}
+              selectedUser={selectedUser}
+              handleDeleteClick={handleDeleteClick}
+            />
           }
         />
         {/* Possible Dynamic Path Needed: */}
         <Route
           path="/edit_user"
-          element={<EditUser selectedUser={selectedUser} allCountryArray={allCountryArray} handleEditUser={handleEditUser} />}
+          element={
+            <EditUser
+              selectedUser={selectedUser}
+              allCountryArray={allCountryArray}
+              handleEditUser={handleEditUser}
+            />
+          }
         />
       </Routes>
     </div>

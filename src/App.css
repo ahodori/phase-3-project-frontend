@@ -62,3 +62,21 @@
   position: fixed;
   left: 0;
 } */
+
+.Header {
+  margin-top: 25px;
+}
+
+.Title {
+  display: inline;
+  border: 2px solid black
+}
+
+.Title:hover {
+  cursor: pointer;
+}
+
+.CompareUsers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
