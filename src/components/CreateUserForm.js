@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import LocationCard from './LocationCard';
+import '../App.css';
+
 
 function CreateUserForm({ allStateArray, allCountryArray, handleNewUser }) {
   const [name, setName] = useState('');
@@ -71,10 +74,12 @@ function CreateUserForm({ allStateArray, allCountryArray, handleNewUser }) {
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
-        {countryCardsArray}
-        <button id="submit-button" className="submit-form">
+        <div className="cards">
+          {countryCardsArray}
+        </div>
+        <Button id="submit-button" className="submit-form">
           Create New User
-        </button>
+        </Button>
       </form>
     </div>
   );

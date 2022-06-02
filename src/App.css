@@ -32,7 +32,33 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column-gap: 0px;
+  /* grid-row-gap: 30px; */
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.location-card {
+  border: 1px solid rgb(223, 221, 221);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* .create-user {
+  position: fixed;
+  right: 0;
+} */
+
+/* .choose-user {
+  position: fixed;
+  left: 0;
+} */

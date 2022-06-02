@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CreateUserForm from './CreateUserForm';
 import UserList from './UserList';
+import '../App.css';
 
 // import './SelectUser.css';
 
@@ -18,7 +19,7 @@ function SelectUser({ userArray, allStateArray, allCountryArray, handleNewUser, 
       </div>
       <div className="choose-user">
         <h3>Choose existing User:</h3>
-        <UserList userArray={userArray} handleSelectedUserChange={handleSelectedUserChange}/>
+        <UserList userArray={userArray} handleSelectedUserChange={handleSelectedUserChange} />
       </div>
     </div>
   );
