@@ -1,49 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import LocationCard from './LocationCard'
+import LocationCard from './LocationCard';
 
 // import './CreateUserForm.css';
 
 function CreateUserForm({ allStateArray, allCountryArray, handleNewUser }) {
-  const [name, setName] = useState('')
-  const [hometown, setHometown] = useState('')
-  const [image, setImage] = useState('')
-  const [visitArray, setVisitArray] = useState([])
+  const [name, setName] = useState('');
+  const [hometown, setHometown] = useState('');
+  const [image, setImage] = useState('');
+  const [visitArray, setVisitArray] = useState([]);
   // console.log(visitArray)
 
   function handleSubmit(e) {
-    e.preventDefault()
-    const newUserArr = {
+    e.preventDefault();
+    const newUser = {
       name: name,
       location: hometown,
-      imageURL: image,
-      visitArray: visitArray
-    }
-    setVisitArray([])
-    setName('')
-    setImage('')
+      image_URL: image,
+      visits: visitArray,
+    };
+    setVisitArray([]);
+    setName('');
+    setImage('');
 
-    handleNewUser(newUserArr)
+    handleNewUser(newUser);
   }
 
   // handles "have visited" or "want to visit" button click
   // replaces/ creates object in array
   function updateVisitObject(country, haveVisited, wantToVisit) {
-    console.log(country, haveVisited, wantToVisit)
     const newObj = {
       country: country,
       haveVisited: haveVisited,
-      wantToVisit: wantToVisit
-    }
+      wantToVisit: wantToVisit,
+    };
     // console.log(newObj)
 
-    let newVisitArray = visitArray.filter(visitObj => visitObj.country !== country)
-    newVisitArray = [...newVisitArray, newObj]
-    setVisitArray(newVisitArray)
+    let newVisitArray = visitArray.filter(
+      (visitObj) => visitObj.country !== country
+    );
+    newVisitArray = [...newVisitArray, newObj];
+    setVisitArray(newVisitArray);
   }
 
   const countryCardsArray = allCountryArray.map((country) => {
-    return <LocationCard key={country.country_name} country={country} updateVisitObject={updateVisitObject} />
-  })
+    return (
+      <LocationCard
+        key={country.country_name}
+        country={country}
+        updateVisitObject={updateVisitObject}
+      />
+    );
+  });
 
   return (
     <div className="create-user-form">
@@ -52,25 +59,27 @@ function CreateUserForm({ allStateArray, allCountryArray, handleNewUser }) {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
         <input
           type="text"
           placeholder="Hometown"
           value={hometown}
-          onChange={e => setHometown(e.target.value)}
+          onChange={(e) => setHometown(e.target.value)}
         />
         <input
           type="text"
           placeholder="Image URL"
           value={image}
-          onChange={e => setImage(e.target.value)}
+          onChange={(e) => setImage(e.target.value)}
         />
         {countryCardsArray}
-        <button id="submit-button" className="submit-form">Create New User</button>
+        <button id="submit-button" className="submit-form">
+          Create New User
+        </button>
       </form>
     </div>
-  )
+  );
 }
 
 export default CreateUserForm;

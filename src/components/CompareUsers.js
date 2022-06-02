@@ -6,15 +6,22 @@ import UserCarousel from './UserCarousel';
 // import './CompareUsers.css';
 
 function CompareUsers({ userArray, selectedUser }) {
+  const [comparedUser, setComparedUser] = useState({});
+
+  function updateComparedUser(obj) {
+    setComparedUser(obj);
+  }
+
   return (
     <div className="CompareUsers">
       <UserCard user={selectedUser} />
-
       ---
-      
-      <UserCard />
+      <UserCard comparedUser={comparedUser} />
       <Commonalities />
-      <UserCarousel />
+      <UserCarousel
+        userArray={userArray}
+        updateComparedUser={updateComparedUser}
+      />
     </div>
   );
 }
