@@ -40,6 +40,10 @@ function Container() {
     // navigate('../compare_users');
   }
 
+  function handleEditUser(userObj) {
+    console.log(userObj);
+  }
+
   //FETCH FOR USERS
   useEffect(() => {
     fetch('http://localhost:9292/users')
@@ -117,7 +121,7 @@ function Container() {
         {/* Possible Dynamic Path Needed: */}
         <Route
           path="/edit_user"
-          element={<EditUser selectedUser={selectedUser} />}
+          element={<EditUser selectedUser={selectedUser} allCountryArray={allCountryArray} handleEditUser={handleEditUser}/>}
         />
       </Routes>
     </div>

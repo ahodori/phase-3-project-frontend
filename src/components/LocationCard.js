@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Button } from 'react-bootstrap';
 
 function LocationCard({ country, updateVisitObject }) {
     const [hasVisited, setHasVisited] = useState(false)
@@ -30,8 +31,8 @@ function LocationCard({ country, updateVisitObject }) {
     return (
         <div className="location-card">
             <h4>{country.country_name}</h4>
-            <button onClick={handleHasVisitedClick}>Visited</button>
-            <button onClick={handleWantToVisitClick}>Want to Visit</button>
+            <Button variant={hasVisited ? "primary" : "danger"} onClick={handleHasVisitedClick}>Visited</Button>
+            <Button variant={wantToVisit ? "primary" : "danger"}onClick={handleWantToVisitClick}>Want to Visit</Button>
         </div>
     );
 }

@@ -24,7 +24,7 @@ function CompareUsers({ userArray, selectedUser }) {
       <button onClick={handleButtonClick}>Edit</button>
       <UserCard user={selectedUser} />
       ---
-      <UserCard comparedUser={comparedUser} />
+      {Object.keys(comparedUser).length > 0 ? <UserCard user={comparedUser}/> : <></>}
       <Commonalities />
       <UserCarousel
         userArray={userArray}
