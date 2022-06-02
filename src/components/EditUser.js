@@ -3,11 +3,12 @@ import EditUserForm from './EditUserForm';
 
 // import './EditUser.css';
 
-function EditUser({ selectedUser }) {
+function EditUser({ selectedUser, allCountryArray, handleEditUser }) {
   return (
     <div className="EditUser">
       <h2>Edit User:</h2>
-      <EditUserForm selectedUser={selectedUser} />
+      <EditUserForm selectedUser={selectedUser} allCountryArray={allCountryArray} handleEditUser={handleEditUser}/>
+      
     </div>
   );
 }
