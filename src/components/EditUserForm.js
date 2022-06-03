@@ -13,9 +13,9 @@ function EditUserForm({ selectedUser, allCountryArray, handleEditUser }) {
     return {
       country: visit.location.country,
       haveVisited: visit.visited,
-      wantToVisit: visit.want_to_visit
-    }
-  })
+      wantToVisit: visit.want_to_visit,
+    };
+  });
 
   const [visitArray, setVisitArray] = useState(newVisitArray);
   // console.log(visitArray)
@@ -56,7 +56,9 @@ function EditUserForm({ selectedUser, allCountryArray, handleEditUser }) {
   //console.log(visitArray);
 
   const countryCardsArray = allCountryArray.map((country) => {
-    let visit = visitArray.filter((visit) => visit.country === country.country_name)
+    let visit = visitArray.filter(
+      (visit) => visit.country === country.country_name
+    );
     visit = visit ? visit[0] : visit;
     //console.log(visit)
     return (
@@ -91,12 +93,10 @@ function EditUserForm({ selectedUser, allCountryArray, handleEditUser }) {
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
-        <div className="cards">
-          {countryCardsArray}
-        </div>
-        <button id="submit-button" className="submit-form">
+        <div className="cards">{countryCardsArray}</div>
+        <Button id="submit-button" className="submit-form">
           Update User
-        </button>
+        </Button>
       </form>
     </div>
   );
