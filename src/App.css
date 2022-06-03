@@ -38,6 +38,25 @@
   }
 }
 
+.Background {
+  opacity: .5;
+  z-index: -1;
+  position: absolute;
+  display: block;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%
+}
+
+.MainHeader {
+  z-index: 0;
+}
+
+.MainContainer {
+  z-index: 0;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -53,16 +72,6 @@
   padding-bottom: 10px;
 }
 
-/* .create-user {
-  position: fixed;
-  right: 0;
-} */
-
-/* .choose-user {
-  position: fixed;
-  left: 0;
-} */
-
 .Header {
   margin-top: 25px;
 }
@@ -76,7 +85,4 @@
   cursor: pointer;
 }
 
-.CompareUsers {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
+

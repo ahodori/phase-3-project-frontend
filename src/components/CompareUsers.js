@@ -23,6 +23,7 @@ function CompareUsers({ userArray, selectedUser, handleDeleteClick }) {
     <div className="CompareUsers">
       {/* <button onClick={handleButtonClick}>Edit</button> */}
       <UserCard
+        className="LeftCard"
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         isSelectedUser={true}
@@ -31,7 +32,7 @@ function CompareUsers({ userArray, selectedUser, handleDeleteClick }) {
       ---
       {Object.keys(comparedUser).length > 0 ? (
         <>
-          <UserCard user={comparedUser} />
+          <UserCard className="RightCard" user={comparedUser} />
           <Commonalities
             selectedUser={selectedUser}
             comparedUser={comparedUser}
@@ -41,6 +42,7 @@ function CompareUsers({ userArray, selectedUser, handleDeleteClick }) {
         <></>
       )}
       <UserCarousel
+        style={{ width: '50%' }}
         userArray={userArray}
         updateComparedUser={updateComparedUser}
       />
