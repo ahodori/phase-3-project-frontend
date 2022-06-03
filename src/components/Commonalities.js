@@ -52,7 +52,7 @@ function Commonalities({selectedUser, comparedUser}) {
 
   return <div className="Commonalities">
     {returnString}
-    {matchedVisits[0] &&
+    {/* {matchedVisits[0] &&
       <p>
         You have both been to {matchedVisits.join(", ")}.
       </p>    
@@ -66,7 +66,7 @@ function Commonalities({selectedUser, comparedUser}) {
       <p>
         {comparedUser.name} has been to {matchedAsks.join(", ")}, all places you want to go.
       </p>    
-    }
+    } */}
 
   </div>;
 }
